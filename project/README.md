@@ -74,8 +74,8 @@ Final-Project/
 
 ## 6. Screenshots
 
-![Converter view](screenshots/Screen1.png)
-![History panel](screenshots/Screen2.png)
+![Converter view](Screen1.png)
+![History panel](Screen2.png)
 
 At least one screenshot of the app running. More if it has several screens.
 
