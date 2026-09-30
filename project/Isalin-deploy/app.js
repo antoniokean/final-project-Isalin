@@ -284,13 +284,17 @@ async function clearHistory() {
 // ---------------------------------------------------------------------
 const app = express();
 
-// Allow requests from local dev (Vite) and your deployed frontend.
-// Set FRONTEND_URL as an environment variable on your hosting platform
-// once you have your real Vercel URL (e.g. https://isalin.vercel.app).
-const allowedOrigins = [
-  "http://localhost:5173",
-  process.env.FRONTEND_URL,
-].filter(Boolean);
+// Allow requests from local dev (Vite) and your deployed frontend(s).
+// FRONTEND_URL can hold ONE address or SEVERAL separated by commas, e.g.
+//   https://isalin-deploy.vercel.app,https://isalin-deploy-6gjw.vercel.app
+// Each must include https:// and match the browser address exactly.
+// Trailing slashes are removed automatically.
+const frontendOrigins = (process.env.FRONTEND_URL || "")
+  .split(",")
+  .map((url) => url.trim().replace(/\/+$/, ""))
+  .filter(Boolean);
+
+const allowedOrigins = ["http://localhost:5173", ...frontendOrigins];
 
 console.log("Allowed CORS origins:", allowedOrigins);
 
