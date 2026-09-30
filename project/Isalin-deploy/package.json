@@ -1,0 +1,15 @@
+{
+  "name": "isalin-server",
+  "version": "1.0.0",
+  "description": "Express API converting Latin text to/from Baybayin script",
+  "main": "app.js",
+  "scripts": {
+    "start": "node --env-file=.env app.js",
+    "dev": "node --watch --env-file=.env app.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "pg": "^8.12.0"
+  }
+}

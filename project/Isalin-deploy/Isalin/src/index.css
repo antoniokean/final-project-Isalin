@@ -1,0 +1,476 @@
+/* -------------------------------------------------------------------
+   Isalin — design tokens
+   Palette pulled from carved bamboo / ink-and-parchment: a dark,
+   warm ground (not the generic cream+terracotta pairing), gold for
+   the "carved" accent, a jade secondary for the swap/action state.
+------------------------------------------------------------------- */
+:root {
+  --ink: #171310;
+  --panel: #221d18;
+  --panel-raised: #2b241d;
+  --parchment: #e9dfc6;
+  --parchment-dim: #b3a789;
+  --gold: #c99a3d;
+  --gold-dim: #8c722f;
+  --jade: #4f8a76;
+  --jade-dim: #35594c;
+  --rust: #a8503a;
+  --line: rgba(233, 223, 198, 0.12);
+  --line-strong: rgba(233, 223, 198, 0.22);
+
+  --font-display: "Fraunces", "Iowan Old Style", serif;
+  --font-body: "IBM Plex Sans", system-ui, sans-serif;
+  --font-baybayin: "Noto Sans Tagalog", var(--font-display);
+
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--ink);
+  background-image: radial-gradient(
+      circle at 15% 0%,
+      rgba(200, 155, 65, 0.07),
+      transparent 45%
+    ),
+    radial-gradient(circle at 90% 15%, rgba(79, 138, 118, 0.08), transparent 40%);
+  color: var(--parchment);
+  font-family: var(--font-body);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+button {
+  font-family: inherit;
+}
+
+textarea:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---------------------------- Layout ---------------------------- */
+
+.app-shell {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+}
+
+.app-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 40px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.app-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 2.6rem;
+  letter-spacing: -0.01em;
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+}
+
+.app-title .glyphs {
+  font-family: var(--font-baybayin);
+  color: var(--gold);
+  font-size: 1.9rem;
+}
+
+.app-subtitle {
+  color: var(--parchment-dim);
+  font-size: 0.95rem;
+  margin: 6px 0 0;
+  max-width: 46ch;
+  line-height: 1.5;
+}
+
+.main-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+@media (max-width: 820px) {
+  .main-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ------------------------- Converter panel ------------------------ */
+
+.converter {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  padding: 28px;
+  position: relative;
+}
+
+.converter::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--gold) 0px,
+    var(--gold) 10px,
+    var(--jade) 10px,
+    var(--jade) 20px
+  );
+  opacity: 0.55;
+}
+
+.direction-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin: 4px 0 22px;
+}
+
+.direction-label {
+  font-family: var(--font-baybayin);
+  font-size: 1.3rem;
+  color: var(--parchment-dim);
+  min-width: 64px;
+  text-align: center;
+  transition: color 0.2s ease;
+}
+
+.direction-label.active {
+  color: var(--gold);
+}
+
+.swap-button {
+  background: var(--panel-raised);
+  border: 1px solid var(--line-strong);
+  color: var(--parchment);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  transition: transform 0.35s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.swap-button:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.swap-button.flipped {
+  transform: rotate(180deg);
+}
+
+.field-label {
+  display: block;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--parchment-dim);
+  margin-bottom: 8px;
+}
+
+.text-area {
+  width: 100%;
+  min-height: 120px;
+  background: var(--ink);
+  border: 1px solid var(--line);
+  color: var(--parchment);
+  padding: 16px;
+  font-size: 1.35rem;
+  line-height: 1.6;
+  resize: vertical;
+}
+
+.text-area.input {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+}
+
+.text-area.output {
+  font-family: var(--font-baybayin);
+}
+
+.text-area:disabled {
+  opacity: 0.7;
+}
+
+.converter-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  min-height: 20px;
+}
+
+.status-text {
+  font-size: 0.85rem;
+  color: var(--parchment-dim);
+}
+
+.status-text.error {
+  color: var(--rust);
+}
+
+.copy-button {
+  background: none;
+  border: 1px solid var(--line-strong);
+  color: var(--parchment-dim);
+  padding: 6px 14px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.copy-button:hover {
+  color: var(--gold);
+  border-color: var(--gold);
+}
+
+.output-block {
+  margin-top: 18px;
+}
+
+/* --------------------------- Breakdown --------------------------- */
+
+.breakdown {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+
+.breakdown-title {
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--parchment-dim);
+  margin: 0 0 12px;
+}
+
+.breakdown-word {
+  margin-bottom: 12px;
+}
+
+.breakdown-word-label {
+  font-size: 0.8rem;
+  color: var(--parchment-dim);
+  margin-bottom: 6px;
+}
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  background: var(--panel-raised);
+  border: 1px solid var(--line-strong);
+  padding: 6px 10px;
+  font-size: 0.85rem;
+  color: var(--parchment);
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.chip .glyph {
+  font-family: var(--font-baybayin);
+  color: var(--gold);
+  font-size: 1.05rem;
+}
+
+/* ----------------------------- Sidebar ---------------------------- */
+
+.sidebar {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  padding: 24px;
+}
+
+.sidebar-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  margin: 0 0 4px;
+}
+
+.sidebar-note {
+  font-size: 0.8rem;
+  color: var(--parchment-dim);
+  margin: 0 0 18px;
+  line-height: 1.5;
+}
+
+.history-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.history-item {
+  border: 1px solid var(--line);
+  background: var(--panel-raised);
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.history-item:hover {
+  border-color: var(--gold);
+}
+
+.history-item-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 0.9rem;
+}
+
+.history-input {
+  color: var(--parchment);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 70%;
+}
+
+.history-output {
+  font-family: var(--font-baybayin);
+  color: var(--gold);
+}
+
+.history-empty {
+  font-size: 0.85rem;
+  color: var(--parchment-dim);
+  border: 1px dashed var(--line-strong);
+  padding: 16px;
+  text-align: center;
+}
+
+.history-direction {
+  font-size: 0.7rem;
+  color: var(--jade);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: 4px;
+}
+
+.footnote {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  font-size: 0.78rem;
+  color: var(--parchment-dim);
+  line-height: 1.6;
+  max-width: 70ch;
+}
+
+/* ------------------------ Reference chart -------------------------- */
+
+.reference-table-wrap {
+  overflow-x: auto;
+}
+
+.reference-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.reference-table th,
+.reference-table td {
+  border: 1px solid var(--line);
+  padding: 6px 8px;
+  text-align: center;
+}
+
+.reference-table thead th {
+  font-size: 0.75rem;
+  color: var(--parchment-dim);
+  font-weight: 500;
+}
+
+.row-label {
+  font-size: 0.75rem;
+  color: var(--parchment-dim);
+  white-space: nowrap;
+  text-align: left;
+  font-weight: 500;
+}
+
+.reference-glyph {
+  font-family: var(--font-baybayin);
+  color: var(--gold);
+  font-size: 1.2rem;
+}
+
+/* ------------------------ Clear / view-all -------------------------- */
+
+.sidebar-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.clear-button,
+.view-all-button {
+  background: none;
+  border: 1px solid var(--line-strong);
+  color: var(--parchment-dim);
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.clear-button:hover,
+.view-all-button:hover {
+  color: var(--rust);
+  border-color: var(--rust);
+}
+
+.view-all-button {
+  display: block;
+  margin: 10px auto 0;
+}
