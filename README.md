@@ -1,4 +1,7 @@
-# Your Project Name
+[![Made with AI](https://img.shields.io/badge/Made_with-AI_assistance-blue)](AI-USAGE.md)
+
+# Isalin
+
 
 > **Replace this whole file.** It is a worked example of the README your project
 > will be graded from, not a file to leave as it is. Start with
@@ -149,8 +152,32 @@ Three honest bullets. This paragraph is worth more than it looks.
 
 ## Author
 
-Your name, and a link. Course and section.
+Antonio Kean, (https://isalin-deploy-6gjw.vercel.app/). CS403.
+
+## AI Usage
+
+This project was developed with AI assistance, primarily using Claude, for parts of the frontend and backend development, debugging, refactoring, and deployment configuration. The AI-generated work and my own contributions are documented in [AI-USAGE.md](AI-USAGE.md).
 
 ## Licence
 
-MIT, see [LICENSE](LICENSE). Put your own name in it.
+MIT License
+
+Copyright (c) 2026 Antonio Kean
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
