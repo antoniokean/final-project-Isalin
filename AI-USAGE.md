@@ -1,4 +1,6 @@
-# AI usage
+# AI Usage
+
+[← Back to README](README.md)
 
 This project was built with AI assistance. This file is the record of it.
 
