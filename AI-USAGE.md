@@ -36,6 +36,20 @@ This project was built with AI assistance. This file is the record of it.
 * **What I kept, what I changed, and why:** I kept the simplified configuration because it avoids hardcoding different API URLs into the application. The fallback to `/api` also preserves the existing local development setup, while `VITE_API_URL` allows the deployed frontend to communicate with the deployed backend.
 * **Commit:** https://github.com/HAU-6APSI/student-6apsi-2215-antoniokean/commit/78953b97f6f18b204c7b1f846add0b541b67c85d
 
+### 2026-09-26 - Add standalone vowels to ReferenceChart component
+* **Tool: Claude
+* **What I asked for: Help add a standalone vowels section to the ReferenceChart component so the reference chart would show the vowels that can be used without a consonant.
+* **What it gave back: The AI added a STANDALONE_VOWELS array containing the three standalone vowel options: a, e / i, and o / u. It also added a new section to the reference chart that displays these vowels separately from the consonants.
+* **What I kept, what I changed, and why: I kept the standalone vowel section because it makes the reference chart easier to understand and clearly separates standalone vowels from consonant glyphs. The implementation uses an array and maps over it to display each vowel, which keeps the component organized and makes the list easy to update.
+* **Commit: https://github.com/antoniokean/Isalin-deploy/commit/2c74f04b1d16dfd0e7c465815330a9c2135628f4
+
+### 2026-09-26 - Refactor ReferenceChart to include standalone vowels
+* **Tool: Claude
+* **What I asked for: Help improve the ReferenceChart implementation so standalone vowels could be integrated into the main reference table instead of being displayed only as a separate section.
+* **What it gave back: The AI changed the reference table to include a dedicated vowel column for the three standalone vowel options: a, e / i, and o / u. It added a STANDALONE_VOWEL_BY_ROW object that maps each vowel row to its corresponding standalone glyph. The table then displays the standalone vowel in this column while continuing to generate consonant glyphs using the existing vowel suffixes.
+* **What I kept, what I changed, and why: I kept this approach because it makes the relationship between standalone vowels and consonant-based syllables clearer in one table. I also kept the existing consonant and kudlit logic because the new standalone vowel column only adds information and does not change how the consonant glyphs are generated. The explanatory text was also updated to clarify that the vowel column contains the standalone glyph used when a syllable has no consonant.
+* **Commit: https://github.com/antoniokean/Isalin-deploy/commit/2f000a34f623786171a71dedde986c12af3aed20
+
 ## 2. Where the AI got it wrong
 
 ### Case 1 - Duplicate CORS middleware
