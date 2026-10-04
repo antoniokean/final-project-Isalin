@@ -7,4 +7,4 @@
 [View the presentation slides](Isalin_Project_Presentation.pdf)
 
 ### 🖼️ Project Image
-![Isalin Project](isalin_logo.png)
+![Isalin Project](Isalin_logo.png)
